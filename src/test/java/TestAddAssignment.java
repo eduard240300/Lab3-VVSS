@@ -32,7 +32,7 @@ public class TestAddAssignment {
 
         Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
 
-        String idTema = "1";
+        String idTema = "4";
         String descriere = "Tema 1";
         int deadline = 5;
         int startline = 2;
@@ -73,7 +73,7 @@ public class TestAddAssignment {
         int startline = 2;
         int success = service.saveTema(idTema, descriere, deadline, startline);
 
-        assertEquals(0, success);
+        assertEquals(1, success);
     }
 
 }
