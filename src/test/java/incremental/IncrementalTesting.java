@@ -48,7 +48,7 @@ public class IncrementalTesting {
     }
 
     @Test
-    public void testAddStudentAndAddGradeAndAddGrade(){
+    public void testAddStudentAndAddAssignmentAndAddGrade(){
         int result1 = service.saveStudent("15", "Ionescu", 563);
         int result2 = service.saveTema("16", "Ceva", 8, 5);
         int result3 = service.saveNota("15", "16", 9, 8, "Feedback");
