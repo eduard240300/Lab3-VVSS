@@ -1,4 +1,4 @@
-package integration;
+package incremental;
 
 import domain.Nota;
 import domain.Student;
@@ -14,9 +14,9 @@ import validation.StudentValidator;
 import validation.TemaValidator;
 import validation.Validator;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
-public class IntegrationTesting {
+public class IncrementalTesting {
     Service service;
 
     @BeforeMethod
@@ -34,32 +34,25 @@ public class IntegrationTesting {
 
     @Test
     public void testAddStudent(){
-
         int result = service.saveStudent("10", "Eduard Lungu", 934);
 
-        assertTrue(result == 1);
+        assertEquals(1, result);
     }
 
     @Test
-    public void testAddAssignment(){
-        int result = service.saveTema("4", "Tema 1", 5, 2);
+    public void testAddStudentAndAddAssignment(){
+        int result1 = service.saveStudent("13", "Popescu", 100);
+        int result2 = service.saveTema("14", "Desc", 6, 4);
 
-        assertTrue(result == 1);
+        assertEquals(2, result1 + result2);
     }
 
     @Test
-    public void testAddGrade(){
-        int result = service.saveNota("1", "1", 10.00, 7, "feedback");
+    public void testAddStudentAndAddGradeAndAddGrade(){
+        int result1 = service.saveStudent("15", "Ionescu", 563);
+        int result2 = service.saveTema("16", "Ceva", 8, 5);
+        int result3 = service.saveNota("15", "16", 9, 8, "Feedback");
 
-        assertTrue(result == 1);
-    }
-
-    @Test
-    public void testAll(){
-        int resultAddStudent = service.saveStudent("10", "Eduard Lungu", 934);
-        int resultAddAssignment = service.saveTema("4", "Tema 1", 5, 2);
-        int resultAddGrade = service.saveNota("10", "4", 10.00, 7, "feedback");
-
-        assertTrue((resultAddStudent == 1) && (resultAddAssignment == 1) && (resultAddGrade == 1));
+        assertEquals(3, result1 + result2 + result3);
     }
 }
