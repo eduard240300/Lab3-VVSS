@@ -49,7 +49,7 @@ public class IntegrationTesting {
 
     @Test
     public void testAddGrade(){
-        int result = service.saveNota("1", "1", 10.00, 7, "feedback");
+        int result = service.saveNota("2", "2", 10.00, 7, "feedback");
 
         assertTrue(result == 1);
     }
